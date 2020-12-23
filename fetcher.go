@@ -14,7 +14,7 @@ type tokenDataCache map[ChainID]map[common.Address]*tokenData
 
 func (tdc tokenDataCache) addTokenData(chainID ChainID, addr common.Address, td *tokenData) {
 	if tdc[chainID] == nil {
-		tdc[chainID] = make(map[common.Address]*tokenData)	
+		tdc[chainID] = make(map[common.Address]*tokenData)
 	}
 	tdc[chainID][addr] = td
 }
@@ -29,7 +29,7 @@ type tokenData struct {
 type Fetcher struct {
 	// TODO: Alias client, common, bind, etc. for users to not have to import other libraries.
 	client         *ethclient.Client
-	newErc20Caller func (common.Address, bind.ContractBackend) (erc20.ReadOnlyContract, error)
+	newErc20Caller func(common.Address, bind.ContractBackend) (erc20.ReadOnlyContract, error)
 	tokenDataCache tokenDataCache
 }
 
@@ -73,8 +73,8 @@ func (f *Fetcher) FetchTokenData(chainID ChainID, address string) (*Token, error
 		}
 		td = &tokenData{
 			decimals: decimals,
-			symbol: symbol,
-			name: name,
+			symbol:   symbol,
+			name:     name,
 		}
 	}
 
@@ -87,6 +87,6 @@ func (f *Fetcher) FetchTokenData(chainID ChainID, address string) (*Token, error
 }
 
 // FetchPairData fetches information about a pair and constructs a pair from the given two tokens.
-func FetchPairData(client *ethclient.Client,) {
+func FetchPairData(client *ethclient.Client) {
 	// TODO: Implement
 }

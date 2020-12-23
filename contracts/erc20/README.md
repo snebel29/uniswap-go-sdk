@@ -13,7 +13,7 @@ $ make
 $ make devtools
 ```
 
-Check the installation went well.
+Check that the installation went well.
 ```
 $ abigen --version
 abigen version 1.9.25-stable

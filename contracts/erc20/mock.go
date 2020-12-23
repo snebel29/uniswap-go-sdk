@@ -15,13 +15,13 @@ type ReadOnlyContract interface {
 
 // ReadOnlyContractMock is a read only contract mock.
 type ReadOnlyContractMock struct {
-	decimalsFn func(*bind.CallOpts) (uint8, error)
+	decimalsFn     func(*bind.CallOpts) (uint8, error)
 	decimalsCalled uint64
 
-	symbolFn func(*bind.CallOpts) (string, error)
+	symbolFn     func(*bind.CallOpts) (string, error)
 	symbolCalled uint64
 
-	nameFn func(*bind.CallOpts) (string, error)
+	nameFn     func(*bind.CallOpts) (string, error)
 	nameCalled uint64
 }
 

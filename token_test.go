@@ -10,7 +10,7 @@ import (
 )
 
 func TestToken_NewToken(t *testing.T) {
-	for idx, f := range []struct{
+	for idx, f := range []struct {
 		shouldErr bool
 		chainID   ChainID
 		address   string
@@ -24,7 +24,7 @@ func TestToken_NewToken(t *testing.T) {
 		{true, MAINNET, "0xInvalidAddress", 8, "WBTC", "Wrapped BTC"},
 		{true, MAINNET, "0x2260fac5e5542a773aa44fbcfedf7c193bc2c5999", 8, "WBTC", "Wrapped BTC"},
 		{true, MAINNET, "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599z", 8, "WBTC", "Wrapped BTC"},
-	}{
+	} {
 		msg := fmt.Sprintf("Test case at index %d failed", idx)
 		token, err := NewToken(f.chainID, f.address, f.decimals, f.symbol, f.name)
 		if f.shouldErr {
@@ -41,7 +41,7 @@ func TestToken_NewToken(t *testing.T) {
 }
 
 func TestToken_Equals(t *testing.T) {
-	for idx, f := range []struct{
+	for idx, f := range []struct {
 		shouldEqual   bool
 		token0chainID ChainID
 		token0address string
@@ -54,7 +54,7 @@ func TestToken_Equals(t *testing.T) {
 		{false, MAINNET, "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599", ROPSTEN, "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"},
 		// Different addresses.
 		{false, MAINNET, "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599", MAINNET, "0x6b175474e89094c44da98b954eedeac495271d0f"},
-	}{
+	} {
 		msg := fmt.Sprintf("Test case at index %d failed", idx)
 		token0, err := NewToken(f.token0chainID, f.token0address, 18, "", "")
 		require.NoError(t, err, msg)

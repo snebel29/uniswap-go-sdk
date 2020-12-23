@@ -20,8 +20,8 @@ func NewToken(chainID ChainID, address string, decimals uint8, symbol, name stri
 	}
 	return &Token{
 		Currency: NewCurrency(decimals, symbol, name),
-		ChainID: chainID,
-		Address: common.HexToAddress(address),
+		ChainID:  chainID,
+		Address:  common.HexToAddress(address),
 	}, nil
 }
 

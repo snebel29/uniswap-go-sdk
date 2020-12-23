@@ -31,7 +31,7 @@ func TestFetcher_FetchTokenData(t *testing.T) {
 
 	decimalsThatReturnError := func(addr common.Address, client bind.ContractBackend) (erc20.ReadOnlyContract, error) {
 		mock := &erc20.ReadOnlyContractMock{}
-		mock.OnDecimals(func(*bind.CallOpts) (uint8, error) {return uint8(0), fmt.Errorf("test error")})
+		mock.OnDecimals(func(*bind.CallOpts) (uint8, error) { return uint8(0), fmt.Errorf("test error") })
 		return mock, nil
 	}
 	fetcher.newErc20Caller = decimalsThatReturnError
@@ -40,7 +40,7 @@ func TestFetcher_FetchTokenData(t *testing.T) {
 
 	symbolThatReturnError := func(addr common.Address, client bind.ContractBackend) (erc20.ReadOnlyContract, error) {
 		mock := &erc20.ReadOnlyContractMock{}
-		mock.OnSymbol(func(*bind.CallOpts) (string, error) {return "", fmt.Errorf("test error")})
+		mock.OnSymbol(func(*bind.CallOpts) (string, error) { return "", fmt.Errorf("test error") })
 		return mock, nil
 	}
 	fetcher.newErc20Caller = symbolThatReturnError
@@ -49,7 +49,7 @@ func TestFetcher_FetchTokenData(t *testing.T) {
 
 	nameThatReturnError := func(addr common.Address, client bind.ContractBackend) (erc20.ReadOnlyContract, error) {
 		mock := &erc20.ReadOnlyContractMock{}
-		mock.OnName(func(*bind.CallOpts) (string, error) {return "", fmt.Errorf("test error")})
+		mock.OnName(func(*bind.CallOpts) (string, error) { return "", fmt.Errorf("test error") })
 		return mock, nil
 	}
 	fetcher.newErc20Caller = nameThatReturnError
@@ -58,9 +58,9 @@ func TestFetcher_FetchTokenData(t *testing.T) {
 
 	mock := &erc20.ReadOnlyContractMock{}
 	successfulERC20Fetch := func(addr common.Address, client bind.ContractBackend) (erc20.ReadOnlyContract, error) {
-		mock.OnDecimals(func(*bind.CallOpts) (uint8, error) {return decimals, nil})
-		mock.OnSymbol(func(*bind.CallOpts) (string, error) {return symbol, nil})
-		mock.OnName(func(*bind.CallOpts) (string, error) {return name, nil})
+		mock.OnDecimals(func(*bind.CallOpts) (uint8, error) { return decimals, nil })
+		mock.OnSymbol(func(*bind.CallOpts) (string, error) { return symbol, nil })
+		mock.OnName(func(*bind.CallOpts) (string, error) { return name, nil })
 		return mock, nil
 	}
 	fetcher.newErc20Caller = successfulERC20Fetch
